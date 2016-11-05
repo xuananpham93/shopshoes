@@ -20,7 +20,7 @@ class ProductsController extends AppController
 		$product = $this->Products->get($id, [
 			'contain' => ['Brands']
 			]);
-		$this->Products->updateAll(array('Products.view'=> $product->view + 1), array('id'=>$id));
+		$this->Products->updateAll(array('view'=> $product->view + 1), array('id'=>$id));
 
 		$related = $this->Products->find()
 		->where(['Products.cat_id' => $product->cat_id, 'id <>' => $product->id])
